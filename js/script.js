@@ -8,9 +8,8 @@ const categoryDataLode = async () => {
     categoriData.data.forEach((categori) => {
         // console.log(categori)
         
-        // , sortHendel(${categori.category_id})
         const categoris = document.createElement('div')
-        categoris.innerHTML = `<a onclick="categoryHandler(${categori.category_id})" class="btn ">${categori.category}</a>`
+        categoris.innerHTML = `<a id="categoriId" onclick="categoryHandler(${categori.category_id})" class="btn ">${categori.category}</a>`
 
         categoriConstainer.appendChild(categoris)
         
@@ -73,21 +72,17 @@ const categoryHandler = async (categoryId) => {
         `;
         videoContainer.appendChild(div)
     })
-    // ${videoData.authors[0].verified ? "ds":"this is wrong"}
 
 }
-let ctgid = 0
-const sortHendel = async (categoryId) => {
-    // ctgid = categoryId
-    // console.log(ctgid)
+let ctgid = "1000"
+
+const sortHendel = async (ctgid) => {
+    // ctgid = ctgidd;
+    // console.log(ctgidd)
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/1000`)
     const data = await res.json()
-    // console.log(data.data)
-    // let sortItem  = data.data
     const videoContainer = document.getElementById('video-container')
     videoContainer.innerHTML ="";
-
-    
 
     let  sortItem = data.data.sort((a,b) => {
         const aa = parseFloat(a.others.views)
@@ -96,12 +91,9 @@ const sortHendel = async (categoryId) => {
         if(aa > bb){
             return -1;
         }
-
     })
-    // console.log(sortItem)
 
     sortItem.forEach((videoData) => {
-        // console.log(videoData)
         const postDate = videoData?.others.posted_date
 
         const hour = Math.floor((postDate / 60 )/60)
