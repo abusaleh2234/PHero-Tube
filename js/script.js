@@ -14,26 +14,22 @@ const categoryDataLode = async () => {
         categoriConstainer.appendChild(categoris)
         
     });
-    // sortHendel(categoriConstainer)
 }
 
+let ctgid = 0;
 
 const categoryHandler = async (categoryId) => {
+    ctgid = categoryId
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${categoryId}`)
     const dataAll = await res.json()
     // console.log(dataAll)
     
-
-
     const notFoundData = document.getElementById('notFoundData')
     if(dataAll.data.length === 0){
         notFoundData.classList.remove('hidden')
     }else{
         notFoundData.classList.add('hidden')
     }
-
-    // console.log(dataAll.data.map(a => parseFloat(a.others.views)))
-
 
     const videoContainer = document.getElementById('video-container')
     videoContainer.innerHTML ="";
@@ -72,14 +68,11 @@ const categoryHandler = async (categoryId) => {
         `;
         videoContainer.appendChild(div)
     })
-
 }
-let ctgid = "1000"
 
-const sortHendel = async (ctgid) => {
-    // ctgid = ctgidd;
-    // console.log(ctgidd)
-    const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/1000`)
+const sortHendel = async () => {
+    // console.log(ctgid)
+    const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${ctgid}`)
     const data = await res.json()
     const videoContainer = document.getElementById('video-container')
     videoContainer.innerHTML ="";
@@ -126,7 +119,6 @@ const sortHendel = async (ctgid) => {
         `;
         videoContainer.appendChild(div)
     })
-
 
 }
 
