@@ -11,15 +11,15 @@
 <body>
     <header class="container mx-auto ">
         <!-- grid grid-cols-2 md:grid-cols-3 -->
-        <div class="py-4 flex justify-between border-b-2">
+        <div class="py-4  grid grid-cols-3 border-b-2 items-center">
             <div class="">
-              <a class="btn btn-ghost normal-case text-xl"><img src="./image/Logo.png" alt=""></a>
+                <a class="text-xl cursor-pointer "><img src="./image/Logo.png" alt=""></a>
             </div>
-            <div class="">
-                <button class="btn">Sort by view</button>
+            <div class="flex justify-center">
+                <a onclick="sortHendel()" class="btn">Sort by view</a>
             </div>
-            <div class="">
-              <a class="btn bg-[#FF1F3D] text-white hover:text-black rounded-lg">Blog</a>
+            <div class="flex justify-end">
+                <a onclick="blogHendel()" class="btn bg-[#FF1F3D] text-white hover:text-black rounded-lg">Blog</a>
             </div>
         </div>
     </header>
